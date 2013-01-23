@@ -1,0 +1,25 @@
+<html>
+
+<script type="text/javascript" src ="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+       $("#thediv").html("document is ready"); 
+       
+       doSomeAjax();
+    });
+    
+    function doSomeAjax(){
+        $.getJSON('http://localhost:8080/hello', function(data) {
+            $.each(data, function(key, val) {
+                $("#thediv").append('<div><b>the ' + key + ' says ' + val + '</b></div>');
+            });
+        }) 
+        .success(function(e) { console.log("success", e); })
+        .error(function(xhr, ajaxOptions, thrownError) { console.log("error", xhr, ajaxOptions, thrownError); })
+    }
+</script>
+
+<div id="thediv" />
+
+</html>
