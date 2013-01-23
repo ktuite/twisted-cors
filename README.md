@@ -6,7 +6,8 @@ The twisted web server will be over on http://mymagicalmachine.com:8080 and then
 
 If you try to use ajax to have the webhostingfuntimes.com webpage talk to the mymagicalmachine.com:8080 server, there will be an error that if you examine says:
 
-    XMLHttpRequest cannot load http://mymagicamachine.com:8080/gimmejson. Origin null is not allowed by Access-Control-Allow-Origin.
+    XMLHttpRequest cannot load http://mymagicamachine.com:8080/gimmejson. 
+    Origin null is not allowed by Access-Control-Allow-Origin.
 
 What you need is for the mymagicalmachine server to set some headers that make things okay. Here's the sneak peek:
 
@@ -22,3 +23,7 @@ The code includes
     - also serves up a static webpage, so if you remove the headers, you can see that it works if it's all on the same domain
 - webpage with some javascript that tries to get json from the webserver
 - some pictures of stuff in action 
+
+I learned almost all I needed to know from here:
+- http://msoulier.wordpress.com/2010/06/05/cross-origin-requests-in-twisted/
+- http://www.tsheffler.com/blog/?p=428 (which explains what's going on more in depth than I care to)
